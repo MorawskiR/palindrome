@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+
+bool isPalindrome(const std::string & text);
+
+int main() 
+{
+  std::string tekst = "kasjak";
+  if (isPalindrome(tekst))
+    {
+    std::cout<<"tak";
+    }
+    else
+    {
+      std::cout<<"nie";
+    }
+
+  
+  return 0;
+}
+
+bool isPalindrome(const std::string & text)
+{
+    std::string tekst2;
+    int size = text.size();
+  size = size - 1 ;
+  bool flaga = true;
+  for (int i = 0; i < text.size(); i++)
+  {
+
+  // std::cout<<" i = "<<size<<std::endl;
+    tekst2[i] = text[size];
+  // std::cout<<"tekst["<<i<<"] = "<<tekst2[i]<<std::endl;
+    size = size - 1;
+  } 
+  size = text.size();
+  size = size - 1;
+  for (int i = 0; i < text.size(); i++)
+  {
+      if (text[i] == tekst2[size])
+      {
+        flaga = true;
+      }
+      else
+      {
+        flaga = false;
+      }
+    
+  }
+  return flaga;
+}
