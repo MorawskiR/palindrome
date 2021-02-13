@@ -5,47 +5,40 @@ bool isPalindrome(const std::string & text);
 
 int main() 
 {
-  std::string tekst = "kasjak";
-  if (isPalindrome(tekst))
-    {
-    std::cout<<"tak";
-    }
-    else
-    {
-      std::cout<<"nie";
-    }
+  std::string tablica_stringow[5] = {"Ala ma kota", "ala", "kajak", "neveroddoreven", "abacada"};
 
-  
+  for (int k = 0; k < 5; k++)
+  {
+  if (isPalindrome(tablica_stringow[k]))
+    std::cout<<std::endl<<"tak, "<<tablica_stringow[k]<< " jest paliondromem."<<std::endl;
+  else
+    std::cout<<std::endl<<"nie, "<<tablica_stringow[k]<< " nie jest paliondromem."<<std::endl;
+  }
   return 0;
 }
-
 bool isPalindrome(const std::string & text)
 {
-    std::string tekst2;
-    int size = text.size();
-  size = size - 1 ;
-  bool flaga = true;
-  for (int i = 0; i < text.size(); i++)
+  std::string tekst2;
+  int size = text.size();
+  //std::cout<<"size : "<<size<<std::endl;
+  int index = size -1;
+  //std::cout<<"index : "<<index<<std::endl;
+  bool flaga = false;
+  for (int i = 0; i < size; i++)
   {
-
-  // std::cout<<" i = "<<size<<std::endl;
-    tekst2[i] = text[size];
-  // std::cout<<"tekst["<<i<<"] = "<<tekst2[i]<<std::endl;
-    size = size - 1;
+      tekst2[i] = text[index];
+      index--;
   } 
-  size = text.size();
-  size = size - 1;
-  for (int i = 0; i < text.size(); i++)
+  index = text.size() - 1 ;
+  int licznik = 0;
+
+  for (int i = 0; i < size; i++)
   {
-      if (text[i] == tekst2[size])
-      {
-        flaga = true;
-      }
-      else
-      {
-        flaga = false;
-      }
-    
+    if (text[i] == tekst2[i])
+      { licznik++; }
+    index--;
   }
+  if (licznik == text.size())
+    flaga = true;
   return flaga;
 }
